@@ -1,0 +1,1 @@
+g++14 window.cc graphicsdemo.cc -o graphicsdemo -lX11

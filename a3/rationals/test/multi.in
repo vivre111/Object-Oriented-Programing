@@ -1,0 +1,2 @@
+create a -1/5 create b 2/6 create c -0/2 create d 1/5
+* a b * a c * b c * b d * c d print a

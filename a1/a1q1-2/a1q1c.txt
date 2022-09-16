@@ -1,0 +1,2 @@
+grep -Ev cs246 myfile.txt | wc -l
+

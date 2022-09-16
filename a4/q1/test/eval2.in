@@ -1,0 +1,12 @@
+a b + done
+print
+eval
+set a 3
+set b 6
+print
+eval
+unset a
+print
+unset b
+print
+eval

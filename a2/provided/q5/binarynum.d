@@ -1,0 +1,1 @@
+binarynum.o: binarynum.cc

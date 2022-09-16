@@ -1,0 +1,4 @@
+a b + ABS NEG ABS ABS 3 * NEG 4 5 -4 / NEG - + done
+print 
+set a 3
+print

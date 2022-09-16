@@ -1,0 +1,33 @@
+#!/bin/bash
+#return number of lines of file $2 containing $1
+countline(){
+	occur=0
+	appear=0
+	while read -r line; do
+		for i in $line; do
+			if [ $i == $1 ]; then
+				appear=1
+			fi
+		done
+		if [ $appear == 1 ]; then
+			occur=$(( occur + 1 ))
+			appear=0
+		fi
+	done < $2
+	return $occur
+}
+countline $1 $2
+time1=$?
+countline $1 $3
+time2=$?
+echo "$time1 $time2"
+
+
+if [ $time1 -lt $time2 ]; then
+	echo $3
+elif [ $time2 -lt $time1 ]; then
+	echo $2
+else	echo "$2 $3"
+fi
+
+

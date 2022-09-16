@@ -1,0 +1,2 @@
+create a -1/5 create b 2/6 create c -0/2 create d 1/5
+- a b - a c - a d - b d - d b print b print a - c c create a 9/3 print a

@@ -1,0 +1,5 @@
+#!/bin/bash
+for file in a b c d e; do
+	marmoset_submit cs246 a1q2${file} a1q2${file}.txt
+done
+

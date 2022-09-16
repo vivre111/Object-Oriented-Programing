@@ -1,0 +1,28 @@
+abc: abc1
+abc: abc2
+abc: abc3
+abc: abc4
+abc: abc5
+make abc
+make abd
+make abc1
+abd: abd1
+abd: abd2
+abd: abc
+abc1: abc12
+abc1: abc13
+
+make abc1
+
+touch abc1
+touch abc11
+
+make abc11
+
+touch abc12
+touch abd1
+
+make abd1
+
+touch abc2
+touch abc

@@ -1,0 +1,9 @@
+a b + done
+print
+set a 3
+set b 6
+print
+unset a
+print
+unset b
+print

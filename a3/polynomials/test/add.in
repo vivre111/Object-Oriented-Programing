@@ -1,0 +1,14 @@
+create a -9/2 8 4/3 4 2/1 2 0/5 1
+create b 3/5 0
+create c 0/3 12
+create d 9/-2 12
+add c d
+print c
+print d
+add a b
+add a c
+add a d 
+add b c
+add a a
+add b a
+

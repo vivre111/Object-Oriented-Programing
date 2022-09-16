@@ -1,0 +1,22 @@
+print a
+print b
+
+create a -9/2 8 4/3 4 2/1 2 0/5 1
+create b 3/5 0
+create c 0/2 12
+create d 9/-2 12
+print a
+print b
+move_assign a b
+print a
+print b
+move_assign c d
+print c
+print d
+print a
+print b
+move_assign a d
+print c
+print d
+print a
+print b

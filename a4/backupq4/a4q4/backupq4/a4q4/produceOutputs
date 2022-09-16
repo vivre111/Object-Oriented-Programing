@@ -1,0 +1,23 @@
+#!/bin/bash
+if [ $# -ne 2 ]; then
+	echo "need 2 arguments" 1>&2
+	exit 1
+fi
+if [ ! -f "$2" ]; then
+	echo "program doesnt exist" 1>&2
+	exit 1
+fi
+for file in $(cat "$1"); do
+	if [ ! -f "${file}.in" ]; then
+		if [ -f "${file}.args" ]; then
+			./"$2" $(cat $file.args)>"${file}.out"
+		else	./"$2" > "${file}.out"
+		fi
+	else 
+		if [ -f "${file}.args" ]; then
+			./"$2" $(cat "$file.args")<"${file}.in">"${file}.out"
+		else	./"$2" < "${file}.in" > "${file}.out"
+		fi
+	fi
+done
+

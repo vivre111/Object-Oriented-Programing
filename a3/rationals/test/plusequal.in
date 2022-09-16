@@ -1,0 +1,2 @@
+create a 1/2 create b 3/2 create c -3/4 create d 0/1
++= a a print a += a b print a += a c print c + c a print c + c a print a

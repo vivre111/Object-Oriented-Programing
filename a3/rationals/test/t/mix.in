@@ -1,0 +1,2 @@
+create a -1/5 create b 2/6 create c -0/2 create d 1/5
++ a b += a c print c print a / a d / c a create a -2/5 print a * c c u- c u- a u- d print a print d -= d d print d -d d c print c quit

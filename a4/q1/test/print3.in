@@ -1,0 +1,4 @@
+a 1 + ABS NEG b - ABS c * done
+print 
+set a 3
+print

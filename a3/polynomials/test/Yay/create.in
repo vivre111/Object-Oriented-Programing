@@ -1,0 +1,11 @@
+create b 3/5 3 -2/1 0
+print b 
+create a 2/3 1 -2/4 6 9/1 0
+print a
+create a 2/3 6 -2/5 4 3/2 2 5/7 0
+print a
+print b
+print a
+create d 2/5 9 2/5 4 -0/4 1
+print d
+print a

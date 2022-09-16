@@ -1,0 +1,14 @@
+#!/bin/bash
+#returns the number of lines a file has containing a pattern
+
+#numberline1=$(egrep "^$1 | $1$|^$1$| $1 " $2 | wc -l)
+#numberline2=$(egrep "^$1 | $1$|^$1$| $1 " $3 | wc -l)
+numberline1=$(egrep -i "$1" "$2"|wc -l)
+numberline2=$(egrep -i "$1" "$3"|wc -l)
+if [ $numberline1 -lt $numberline2 ]; then
+	echo "$3"
+elif [ $numberline1 -gt $numberline2 ]; then
+	echo "$2"
+else echo "$2 $3" 
+fi
+

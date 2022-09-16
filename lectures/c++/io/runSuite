@@ -1,0 +1,92 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+	echo "need two arguments" 1>&2
+	exit 1
+fi
+if [ ! -f "$2" ]; then
+	echo "program doesn't exist" 1>&2
+fi
+
+mkdir -p tmp
+cd tmp
+tempname=$(mktemp tmp.XXXX)
+cd ..
+for file in $(cat $1); do
+	if [ ! -e ${file}.out ]; then
+		echo "${file}.out don't exist" 1>&2
+		rm "/tmp/${tempname}"
+		exit 1
+	fi
+	if [ ! -r ${file}.out ]; then
+		echo "${file}.out unreadable" 1>&2
+		rm "tmp/${tempname}"
+		exit 1
+	fi
+	
+	if [ ! -f ${file}.in ]; then
+
+		if [ -f ${file}.args ]; then
+			./"$2" $(cat ${file}.args)>"/tmp/${tempname}"
+			cmp --silent "/tmp/${tempname}" ${file}.out
+			if [ $? -ne 0 ]; then
+				echo "Test failed: $file"
+				echo "Args:"
+				cat "${file}.args"
+				echo "Input:"
+#				echo ""
+				echo "Expected:"
+				cat "${file}.out"
+				echo "Actual:"
+				cat "/tmp/${tempname}"
+			fi
+
+		else
+			./"$2">"/tmp/${tempname}"
+			cmp --silent "/tmp/${tempname}" ${file}.out
+			if [ $? -ne 0 ]; then
+				echo "Test failed: $file"
+				echo "Args:"
+#				echo ""
+				echo "Input:"
+#				echo ""
+				echo "Expected:"
+				cat "${file}.out"
+				echo "Actual:"
+				cat "/tmp/${tempname}"
+			fi			
+		fi
+	else
+		if [ -f ${file}.args ]; then
+			./"$2" $(cat ${file}.args)< "${file}.in" >"/tmp/${tempname}"
+			cmp --silent "/tmp/${tempname}" ${file}.out
+			if [ $? -ne 0 ]; then
+				echo "Test failed: $file"
+				echo "Args:"
+				cat "${file}.args"
+				echo "Input:"
+				cat "${file}.in"
+				echo "Expected:"
+				cat "${file}.out"
+				echo "Actual:"
+				cat "/tmp/${tempname}"
+			fi	
+		else
+			./"$2"< "${file}.in">"/tmp/${tempname}"
+			cmp --silent "/tmp/${tempname}" ${file}.out
+			if [ $? -ne 0 ]; then
+				echo "Test failed: $file"
+				echo "Args:"
+#				echo ""
+				echo "Input:"
+				cat "${file}.in"
+				echo "Expected:"
+				cat "${file}.out"
+				echo "Actual:"
+				cat "/tmp/${tempname}"
+			fi
+		fi
+	fi
+
+done
+rm "/tmp/${tempname}"

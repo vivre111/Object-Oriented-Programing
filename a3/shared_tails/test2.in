@@ -1,0 +1,12 @@
+print 0
+attach 0 0 1
+attach 0 0 2
+attach 0 0 3
+print 0
+attach 0 1 4
+attach 1 0 5
+attach 1 0 6
+attach 1 1 7
+print 0
+print 1
+print 2
